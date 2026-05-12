@@ -38,6 +38,6 @@ class Solution {
                     return mid-1;
             }
         }
-        return start;
+        return -1;
     }
 }

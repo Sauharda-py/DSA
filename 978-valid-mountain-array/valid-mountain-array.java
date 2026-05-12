@@ -2,27 +2,14 @@ class Solution {
     public boolean validMountainArray(int[] arr) {
         if(arr.length<3)
             return false;
-        //Finding the max from the array
-        int max = -1;
-        int max_index = -1;
-        for(int i=1;i<arr.length-1;i++)
-        {
-            if(arr[i]>max)
-            {
-                max = arr[i];//9
-                max_index = i;//2
-            }
-        }
-        for(int i=0;i<=max_index-1;i++)
-        {
-            if(arr[i]>=arr[i+1])
-                return false;
-        }
-        for(int j=max_index;j<arr.length-1;j++)
-        {
-            if(arr[j]<=arr[j+1])
-                return false;
-        }
-        return true;
-    }
+        int i=0,j=arr.length-1;
+        while(i+1<arr.length && arr[i]<arr[i+1])
+            i++;
+        while(j>0 && arr[j]<arr[j-1])
+            j--;
+        if(i!=0 && j!=arr.length-1 && i==j)
+            return true;
+        else
+            return false;
+    }   
 }

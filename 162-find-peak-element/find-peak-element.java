@@ -1,9 +1,11 @@
 class Solution {
     public int findPeakElement(int[] nums) {
+        //if array is of length 1
         if(nums.length==1)
         {
             return 0;
         }
+        //if array is of length 2
         if(nums.length==2)
         {
             if(nums[0]>nums[1])
@@ -11,12 +13,14 @@ class Solution {
             else
                 return 1;
         }
+        //if array is a mountain array ie length>=3
         int start = 0;
         int end = nums.length-1;
         
         while(start<=end)
         {
             int mid = start + (end-start)/2;
+            //if mid isnt first or last element
             if(mid!=0 && mid!=nums.length-1)
             {
                 if(nums[mid]>nums[mid+1] && nums[mid]>nums[mid-1])
@@ -26,6 +30,7 @@ class Solution {
                 else
                     end = mid-1;//peak must be on left of mid
             }
+            //if mid is first or last element
             else
             {
                 if(mid==0 && nums[mid]>nums[mid+1])
